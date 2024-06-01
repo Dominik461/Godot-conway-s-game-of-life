@@ -7,7 +7,6 @@ using namespace godot;
 
 GameOfLife::GameOfLife()
 {
-   
 }
 
 GameOfLife::~GameOfLife()
