@@ -2,6 +2,8 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="GameOfLife" type="GameOfLife" parent="."]
+
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 7.0
 offset_top = 7.0

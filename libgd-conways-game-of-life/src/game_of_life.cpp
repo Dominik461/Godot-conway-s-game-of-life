@@ -17,13 +17,13 @@ void GameOfLife::_ready() {
     
     if (Engine::get_singleton()->is_editor_hint()) return;
 
-    Timer* timer = get_node<Timer>("./TickTimer");
+    Timer* timer = get_node<Timer>("../TickTimer");
     timer->stop();
 
     grid_size = Vector2i(20, 20);
     cell_size = Vector2i(20, 20);
 
-    GridContainer *grid_container = Object::cast_to<GridContainer>(get_node<GridContainer>("GridContainer"));
+    GridContainer *grid_container = Object::cast_to<GridContainer>(get_node<GridContainer>("../GridContainer"));
 
     grid_container->set_columns(grid_size.x);
     grid_container->set_custom_minimum_size(grid_size * cell_size);
@@ -40,10 +40,10 @@ void GameOfLife::_ready() {
         cells.append(row);
     }
 
-    Button *start_button = Object::cast_to<Button>(get_node<Button>("StartButton"));
+    Button *start_button = Object::cast_to<Button>(get_node<Button>("../StartButton"));
     start_button->connect("pressed", Callable(this, "_on_start_pressed"));
 
-    Button *reset_button = Object::cast_to<Button>(get_node<Button>("ResetButton"));
+    Button *reset_button = Object::cast_to<Button>(get_node<Button>("../ResetButton"));
     reset_button->connect("pressed", Callable(this, "_on_reset_pressed"));
 
     timer->connect("timeout", Callable(this, "_on_tick_timeout"));
@@ -52,12 +52,12 @@ void GameOfLife::_ready() {
 }
 
 void GameOfLife::_on_start_pressed() {
-    Timer* timer = get_node<Timer>("TickTimer");
+    Timer* timer = get_node<Timer>("../TickTimer");
     timer->start();
 }
 
 void GameOfLife::_on_reset_pressed() {
-    Timer* timer = get_node<Timer>("TickTimer");
+    Timer* timer = get_node<Timer>("../TickTimer");
     timer->stop();
     for (int y = 0; y < grid_size.y; ++y) {
         for (int x = 0; x < grid_size.x; ++x) {
