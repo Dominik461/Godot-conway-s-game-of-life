@@ -14,8 +14,8 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	ClassDB::register_class<GameOfLife>();
-	ClassDB::register_class<Cell>();
+	//ClassDB::register_class<GameOfLife>();
+	//ClassDB::register_class<Cell>();
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
