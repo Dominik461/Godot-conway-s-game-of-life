@@ -17,8 +17,6 @@ void GameOfLife::_ready() {
     
     if (Engine::get_singleton()->is_editor_hint()) return;
 
-    UtilityFunctions::print("test");
-
     Timer* timer = get_node<Timer>("./TickTimer");
     timer->stop();
 
