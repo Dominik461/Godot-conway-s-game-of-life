@@ -4,6 +4,7 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 
+#include "cell.h"
 #include "game_of_life.h"
 
 using namespace godot;
@@ -14,6 +15,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 		return;
 	}
 	ClassDB::register_class<GameOfLife>();
+	ClassDB::register_class<Cell>();
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
