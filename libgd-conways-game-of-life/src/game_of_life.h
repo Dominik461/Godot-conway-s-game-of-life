@@ -16,7 +16,7 @@ private:
     Vector2i grid_size;
     Vector2i cell_size;
     Array cells;
-    float tickRate = 1.0f;
+    float tickRate = 0.3f;
 
 
 protected:
