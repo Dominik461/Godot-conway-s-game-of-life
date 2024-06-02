@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://w3nvj16u8qeu"]
+
+[ext_resource type="Script" path="res://scripts/CellGDscript.gd" id="1_rch58"]
+
+[node name="SceCellGdScript_tscn" type="Button"]
+script = ExtResource("1_rch58")
