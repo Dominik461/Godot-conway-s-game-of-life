@@ -12,7 +12,7 @@ def validate_parent_dir(key, val, env):
 
 
 libname = "conways-game-of-life"
-projectdir = "demo"
+
 
 localEnv = Environment(tools=["default"], PLATFORM="")
 
@@ -50,7 +50,7 @@ env.Alias("compiledb", compilation_db)
 
 env = SConscript("../godot-cpp/SConstruct", {"env": env, "customs": customs})
 
-env.Append(CPPPATH=["src/"])
+env.Append(CPPPATH=["src/", "../godot-cpp/gen/include"])
 sources = Glob("src/*.cpp")
 
 file = "{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"])
@@ -65,9 +65,7 @@ library = env.SharedLibrary(
     source=sources,
 )
 
-copy = env.InstallAs("{}/bin/{}/lib{}".format(projectdir, env["platform"], file), library)
-
-default_args = [library, copy]
+default_args = [library]
 if localEnv.get("compiledb", False):
     default_args += [compilation_db]
 Default(*default_args)
