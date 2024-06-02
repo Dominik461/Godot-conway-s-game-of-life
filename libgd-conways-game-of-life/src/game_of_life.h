@@ -24,7 +24,6 @@ protected:
 
 public:
     void _ready();
-    void _process(double delta);
 
     void _on_start_pressed();
     void _on_reset_pressed();
