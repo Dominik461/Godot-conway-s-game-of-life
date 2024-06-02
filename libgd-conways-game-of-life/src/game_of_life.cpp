@@ -3,6 +3,10 @@
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/timer.hpp>
 
+#include <godot_cpp/variant/utility_functions.hpp>
+
+#include "godot_cpp/classes/engine.hpp"
+
 void GameOfLife::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_start_pressed"), &GameOfLife::_on_start_pressed);  
     ClassDB::bind_method(D_METHOD("_on_reset_pressed"), &GameOfLife::_on_reset_pressed);
@@ -10,8 +14,12 @@ void GameOfLife::_bind_methods() {
 }
 
 void GameOfLife::_ready() {
+    
+    if (Engine::get_singleton()->is_editor_hint()) return;
 
-    Timer* timer = get_node<Timer>("TickTimer");
+    UtilityFunctions::print("test");
+
+    Timer* timer = get_node<Timer>("./TickTimer");
     timer->stop();
 
     grid_size = Vector2i(20, 20);
@@ -86,6 +94,8 @@ int GameOfLife::count_alive_neighbors(int x, int y) {
 }
 
 void GameOfLife::_on_tick_timeout() {
+
+    if (Engine::get_singleton()->is_editor_hint()) return;
 
     Array new_states;
     for (int y = 0; y < grid_size.y; ++y) {
