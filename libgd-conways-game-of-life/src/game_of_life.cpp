@@ -1,15 +1,14 @@
 #include "game_of_life.h"
 #include <godot_cpp/classes/grid_container.hpp>
 #include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/array.hpp>
 
-void MainScene::_bind_methods() {
+void GameOfLife::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_cell_pressed", "x", "y"), &MainScene::_on_cell_pressed);
     ClassDB::bind_method(D_METHOD("_on_start_pressed"), &MainScene::_on_start_pressed);
     ClassDB::bind_method(D_METHOD(D_METHOD("_on_reset_pressed")), &MainScene::_on_reset_pressed);
 }
 
-void MainScene::_ready() {
+void GameOfLife::_ready() {
     grid_size = Vector2i(100, 50);
     cell_size = Vector2i(5, 5);
 
@@ -37,7 +36,7 @@ void MainScene::_ready() {
     reset_button->connect("pressed", Callable(this, "_on_reset_pressed"));
 }
 
-void MainScene::_on_cell_pressed(int x, int y) {
+void GameOfLife::_on_cell_pressed(int x, int y) {
     Cell *cell = Object::cast_to<Cell>(cells[y][x]);
     cell->set_alive(!cell->get_alive());
 }

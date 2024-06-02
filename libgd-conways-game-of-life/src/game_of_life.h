@@ -3,14 +3,14 @@
 #define GAME_OF_LIFE_CLASS_H
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/containers/vector.hpp>
+#include <godot_cpp/templates/vector.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
 #include "cell.h"
 
 using namespace godot;
 
-class MainScene : public Node2D {
-    GDCLASS(MainScene, Node2D);
+class GameOfLife : public Node2D {
+    GDCLASS(GameOfLife, Node2D);
 
 private:
     Vector2i grid_size;
