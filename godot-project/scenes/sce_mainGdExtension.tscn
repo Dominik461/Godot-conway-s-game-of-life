@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx6heq4oxxphu"]
+
+[ext_resource type="Script" path="res://scripts/GameOfLifeGDScript.gd" id="1_xa3kh"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xa3kh")
+grid_size = Vector2i(100, 50)
+cell_size = Vector2i(5, 5)
+tick_rate = 0.5
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 63.0
+offset_bottom = 47.0
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 50.0
+offset_top = 819.0
+offset_right = 96.0
+offset_bottom = 850.0
+text = "Start"
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 819.0
+offset_right = 151.0
+offset_bottom = 850.0
+text = "Reset"
+
+[node name="TickTimer" type="Timer" parent="."]
+wait_time = 1.4
+autostart = true
