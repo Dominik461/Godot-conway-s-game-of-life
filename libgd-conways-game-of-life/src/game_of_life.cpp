@@ -4,7 +4,6 @@
 #include <godot_cpp/classes/timer.hpp>
 
 void GameOfLife::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("_on_cell_pressed", "x", "y"), &GameOfLife::_on_cell_pressed);
     ClassDB::bind_method(D_METHOD("_on_start_pressed"), &GameOfLife::_on_start_pressed);  
     ClassDB::bind_method(D_METHOD("_on_reset_pressed"), &GameOfLife::_on_reset_pressed);
     ClassDB::bind_method(D_METHOD("_on_tick_timeout"), &GameOfLife::_on_tick_timeout);
@@ -61,6 +60,28 @@ void GameOfLife::_on_reset_pressed() {
             cell->update_visuals(); 
         }
     }
+
+}
+
+int GameOfLife::count_alive_neighbors(int x, int y) {
+
+    int alive_neighbors = 0;
+        for (int i = -1; i <= 1; ++i) {
+            for (int j = -1; j <= 1; ++j) {
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+                int nx = x + i;
+                int ny = y + j;
+                if (nx >= 0 && nx < grid_size.x && ny >= 0 && ny < grid_size.y) {
+                    Cell *neighbor = Object::cast_to<Cell>(&cells[ny][nx]);
+                    if (neighbor->get_alive()) {
+                        alive_neighbors++;
+                    }
+                }
+            }
+        }
+        return alive_neighbors;
 
 }
 

@@ -9,14 +9,11 @@ using namespace godot;
 class Cell : public Button {
     GDCLASS(Cell, Button);
 
-private:
-   
-
 protected:
     static void _bind_methods();
 
 public:
- bool is_alive = false;
+    bool is_alive = false;
 
     void _ready();
     void _on_pressed();

@@ -26,7 +26,6 @@ public:
     void _ready();
     void _process(double delta);
 
-    void _on_cell_pressed(int x, int y);
     void _on_start_pressed();
     void _on_reset_pressed();
     void _on_tick_timeout();
