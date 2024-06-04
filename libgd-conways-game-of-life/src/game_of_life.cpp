@@ -1,7 +1,9 @@
 #include "game_of_life.h"
 #include <godot_cpp/classes/grid_container.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/timer.hpp>
+#include <godot_cpp/classes/time.hpp>
 
 #include <godot_cpp/variant/utility_functions.hpp>
 
@@ -98,6 +100,9 @@ void GameOfLife::_on_tick_timeout() {
     
     if (Engine::get_singleton()->is_editor_hint()) return;
 
+    int64_t  start_time = Time::get_singleton()->get_unix_time_from_system() * 1000;
+    UtilityFunctions::print(start_time);
+
     Array new_states;
     for (int y = 0; y < grid_size.y; ++y) {
         Array new_row;
@@ -133,5 +138,9 @@ void GameOfLife::_on_tick_timeout() {
             cell->update_visuals();
         }
     }
-    
+    int64_t  end_time = Time::get_singleton()->get_unix_time_from_system() * 1000;
+    Label *updateCycleLabel = Object::cast_to<Label>(get_node<Label>("../UpdateCycleLabel"));
+    updateCycleLabel->set_text("Update Cycle Duration: " + String::num_int64(end_time - start_time) + "ms");
+    UtilityFunctions::print(end_time);
+    UtilityFunctions::print("GDExtension Update Cycle Duration: " + String::num_int64(end_time - start_time) + "ms");
 }
