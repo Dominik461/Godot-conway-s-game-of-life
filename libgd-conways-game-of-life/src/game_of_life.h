@@ -16,7 +16,8 @@ private:
     Vector2i grid_size;
     Vector2i cell_size;
     Array cells;
-    float tickRate = 0.3f;
+    float tickRate = 0.4f;
+
 
 
 protected:
@@ -28,6 +29,12 @@ public:
     void _on_start_pressed();
     void _on_reset_pressed();
     void _on_tick_timeout();
+
+    void _on_pattern_selected(int index);
+    void clear_grid();
+    void set_pattern1();
+    void set_pattern2();
+    void set_pattern(const std::vector<std::vector<int>>& pattern, int offset_x, int offset_y);
 
     int count_alive_neighbors(int x, int y);
 };

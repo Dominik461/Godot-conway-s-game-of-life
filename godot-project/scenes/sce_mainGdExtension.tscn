@@ -27,12 +27,8 @@ offset_left = 1364.0
 offset_top = 439.0
 offset_right = 1404.0
 offset_bottom = 462.0
-
-[node name="MemoryUsageLabel" type="Label" parent="."]
-offset_left = 1361.0
-offset_top = 332.0
-offset_right = 1401.0
-offset_bottom = 355.0
+text = "A
+A"
 
 [node name="GameOfLife" type="GameOfLife" parent="."]
 
@@ -40,9 +36,24 @@ offset_bottom = 355.0
 wait_time = 1.4
 autostart = true
 
+[node name="PatternOptionButton" type="OptionButton" parent="."]
+offset_left = 156.0
+offset_top = 819.0
+offset_right = 277.0
+offset_bottom = 850.0
+item_count = 3
+selected = 0
+popup/item_0/text = "Empty"
+popup/item_0/id = 0
+popup/item_1/text = "1. Pattern"
+popup/item_1/id = 1
+popup/item_2/text = "2. Pattern"
+popup/item_2/id = 2
+
 [node name="MemoryStats" type="MemoryStats" parent="."]
-offset_left = 1301.0
-offset_top = 742.0
-offset_right = 1494.0
-offset_bottom = 765.0
-text = "HAHAHAHAHAHAHAHAH"
+offset_left = 1364.0
+offset_top = 498.0
+offset_right = 1557.0
+offset_bottom = 547.0
+text = "Static Mem Usage: 
+345.886082 MB"

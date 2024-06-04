@@ -6,7 +6,7 @@
 script = ExtResource("1_xggre")
 grid_size = Vector2i(70, 42)
 cell_size = Vector2i(15, 15)
-tick_rate = 0.5
+tick_rate = 0.4
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 14.0
@@ -29,17 +29,27 @@ offset_bottom = 850.0
 text = "Reset"
 
 [node name="UpdateCycleLabel" type="Label" parent="."]
-offset_left = 1395.0
-offset_top = 474.0
-offset_right = 1435.0
-offset_bottom = 497.0
-
-[node name="MemoryLabel" type="Label" parent="."]
-offset_left = 1415.0
-offset_top = 604.0
-offset_right = 1455.0
-offset_bottom = 627.0
+offset_left = 1364.0
+offset_top = 452.0
+offset_right = 1404.0
+offset_bottom = 501.0
+text = "A
+A"
 
 [node name="TickTimer" type="Timer" parent="."]
 wait_time = 1.4
 autostart = true
+
+[node name="PatternOptionButton" type="OptionButton" parent="."]
+offset_left = 156.0
+offset_top = 819.0
+offset_right = 277.0
+offset_bottom = 850.0
+
+[node name="MemoryStats" type="MemoryStats" parent="."]
+offset_left = 1364.0
+offset_top = 500.0
+offset_right = 1507.0
+offset_bottom = 549.0
+text = "Static Mem Usage: 
+344.914494 MB"

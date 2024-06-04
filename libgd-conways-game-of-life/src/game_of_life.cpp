@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/classes/time.hpp>
+#include <godot_cpp/classes/option_button.hpp>
 
 #include <godot_cpp/variant/utility_functions.hpp>
 
@@ -13,6 +14,8 @@ void GameOfLife::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_start_pressed"), &GameOfLife::_on_start_pressed);  
     ClassDB::bind_method(D_METHOD("_on_reset_pressed"), &GameOfLife::_on_reset_pressed);
     ClassDB::bind_method(D_METHOD("_on_tick_timeout"), &GameOfLife::_on_tick_timeout);
+    ClassDB::bind_method(D_METHOD("_on_pattern_selected", "index"), &GameOfLife::_on_pattern_selected);
+
 }
 
 void GameOfLife::_ready() {
@@ -48,6 +51,17 @@ void GameOfLife::_ready() {
     Button *reset_button = Object::cast_to<Button>(get_node<Button>("../ResetButton"));
     reset_button->connect("pressed", Callable(this, "_on_reset_pressed"));
 
+    OptionButton *pattern_button = Object::cast_to<OptionButton>(get_node<OptionButton>("../PatternOptionButton"));
+    pattern_button->connect("item_selected", Callable(this, "_on_pattern_selected"));
+    
+    //if(pattern_button != nullptr)
+    //{
+    //    pattern_button->add_item("Clear");
+    //    pattern_button->add_item("Pattern 1");
+    //    pattern_button->add_item("Pattern 2"); 
+    //}
+
+
     timer->connect("timeout", Callable(this, "_on_tick_timeout"));
     timer->set_wait_time(tickRate);
 
@@ -70,6 +84,76 @@ void GameOfLife::_on_reset_pressed() {
         }
     }
 
+}
+
+void GameOfLife::_on_pattern_selected(int index) {
+    clear_grid();
+    switch (index) {
+        case 0:  // Clear
+            break;
+        case 1:  // Pattern 1
+            set_pattern1();
+            break;
+        case 2:  // Pattern 2
+            set_pattern2();
+            break;
+    }
+}
+
+void GameOfLife::clear_grid() {
+    for (int y = 0; y < grid_size.y; ++y) {
+        for (int x = 0; x < grid_size.x; ++x) {
+            Array& row = (Array) cells[y];
+            Cell *cell = Object::cast_to<Cell>(row[x]);
+            cell->is_alive = false;
+            cell->update_visuals(); 
+        }
+    }
+}
+
+void GameOfLife::set_pattern1() {
+    // Define your pattern 1 here
+    std::vector<std::vector<int>> pattern = {
+		{0, 0, 1, 0, 0},
+		{0, 1, 1, 1, 0},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 1, 0, 1, 0},
+		{1, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1},
+		{1, 0, 0, 0, 1},
+		{1, 0, 0, 0, 1},
+		{1, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1}
+    };
+    set_pattern(pattern, 32, 20);  // Place pattern at (5, 5)
+}
+
+void GameOfLife::set_pattern2() {
+    // Define your pattern 2 here
+    std::vector<std::vector<int>> pattern = {
+		{0, 1, 1, 0, 0, 1, 1, 0},
+		{1, 0, 0, 1, 1, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 1},
+		{0, 1, 0, 0, 0, 0, 1, 0},
+		{0, 0, 1, 0, 0, 1, 0, 0},
+		{0, 0, 0, 1, 1, 0, 0, 0}
+    };
+    set_pattern(pattern, 32, 20);  // Place pattern at (10, 10)
+}
+
+void GameOfLife::set_pattern(const std::vector<std::vector<int>>& pattern, int offset_x, int offset_y) {
+    for (size_t y = 0; y < pattern.size(); ++y) {
+        for (size_t x = 0; x < pattern[y].size(); ++x) {
+            if (y + offset_y < grid_size.y && x + offset_x < grid_size.x) {
+                Array& row = (Array) cells[y+offset_y];
+                Cell *cell = Object::cast_to<Cell>(row[x+offset_x]);
+                if (cell) {
+                    cell->set_alive(pattern[y][x] == 1);
+                }
+            }
+        }
+    }
 }
 
 int GameOfLife::count_alive_neighbors(int x, int y) {
