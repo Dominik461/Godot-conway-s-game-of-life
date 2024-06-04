@@ -39,3 +39,10 @@ offset_bottom = 355.0
 [node name="TickTimer" type="Timer" parent="."]
 wait_time = 1.4
 autostart = true
+
+[node name="MemoryStats" type="MemoryStats" parent="."]
+offset_left = 1301.0
+offset_top = 742.0
+offset_right = 1494.0
+offset_bottom = 765.0
+text = "HAHAHAHAHAHAHAHAH"

@@ -140,7 +140,7 @@ void GameOfLife::_on_tick_timeout() {
     }
     int64_t  end_time = Time::get_singleton()->get_unix_time_from_system() * 1000;
     Label *updateCycleLabel = Object::cast_to<Label>(get_node<Label>("../UpdateCycleLabel"));
-    updateCycleLabel->set_text("Update Cycle Duration: " + String::num_int64(end_time - start_time) + "ms");
+    updateCycleLabel->set_text("Update Cycle Duration: \n" + String::num_int64(end_time - start_time) + "ms");
     UtilityFunctions::print(end_time);
     UtilityFunctions::print("GDExtension Update Cycle Duration: " + String::num_int64(end_time - start_time) + "ms");
 }

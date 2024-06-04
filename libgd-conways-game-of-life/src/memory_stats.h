@@ -1,13 +1,13 @@
 #ifndef MEMORYSTATS_H
 #define MEMORYSTATS_H
 
-#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/label.hpp>
 
 
 using namespace godot;
 
-class MemoryStats : public Node2D {
-    GDCLASS(MemoryStats, Node2D);
+class MemoryStats : public Label {
+    GDCLASS(MemoryStats, Label);
 
 protected:
     static void _bind_methods();
