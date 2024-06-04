@@ -38,6 +38,9 @@ func _on_reset_pressed():
 			cell.update_visuals()
 
 func _on_tick_timeout():
+	var start_time = Time.get_unix_time_from_system() * 1000
+	print(start_time)
+	
 	var new_states = []
 	for y in range(grid_size.y):
 		var new_row = []
@@ -61,6 +64,12 @@ func _on_tick_timeout():
 		for x in range(grid_size.x):
 			cells[y][x].is_alive = new_states[y][x]
 			cells[y][x].update_visuals()
+	
+	var end_time = Time.get_unix_time_from_system() * 1000
+	$UpdateCycleLabel.text = "Tick Duration: " + str(end_time - start_time) + "ms"
+	print(end_time)
+	print("GDScript Tick Duration: " + str(end_time - start_time) + "ms")
+
 
 func count_alive_neighbors(x, y):
 	var alive_neighbors = 0
