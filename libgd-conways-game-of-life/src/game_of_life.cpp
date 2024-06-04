@@ -22,8 +22,8 @@ void GameOfLife::_ready() {
     Timer* timer = get_node<Timer>("../TickTimer");
     timer->stop();
 
-    grid_size = Vector2i(20, 20);
-    cell_size = Vector2i(20, 20);
+    grid_size = Vector2i(70, 42);
+    cell_size = Vector2i(15, 15);
 
     GridContainer *grid_container = Object::cast_to<GridContainer>(get_node<GridContainer>("../GridContainer"));
 

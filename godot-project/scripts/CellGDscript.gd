@@ -27,4 +27,4 @@ func update_visuals():
 		self.modulate = Color(0, 255, 0)
 	else:
 		self.text = ""
-		self.modulate = Color(255, 0, 255)
+		self.modulate = Color(0, 0, 255)
