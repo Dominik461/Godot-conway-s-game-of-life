@@ -34,6 +34,12 @@ offset_top = 16.0
 offset_right = 1432.0
 offset_bottom = 39.0
 
+[node name="MemoryLabel" type="Label" parent="."]
+offset_left = 1392.0
+offset_top = 92.59
+offset_right = 1432.0
+offset_bottom = 115.59
+
 [node name="TickTimer" type="Timer" parent="."]
 wait_time = 1.4
 autostart = true

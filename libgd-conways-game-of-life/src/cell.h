@@ -4,7 +4,6 @@
 #include <godot_cpp/classes/button.hpp>
 
 using namespace godot;
-using namespace godot;
 
 class Cell : public Button {
     GDCLASS(Cell, Button);

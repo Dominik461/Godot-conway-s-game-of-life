@@ -6,6 +6,7 @@
 
 #include "cell.h"
 #include "game_of_life.h"
+#include "memory_stats.h"
 
 using namespace godot;
 
@@ -17,6 +18,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	}
 	ClassDB::register_class<GameOfLife>();
 	ClassDB::register_class<Cell>();
+	ClassDB::register_class<MemoryStats>();
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {

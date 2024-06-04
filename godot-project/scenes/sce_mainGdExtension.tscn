@@ -28,6 +28,12 @@ offset_top = 41.0
 offset_right = 1383.0
 offset_bottom = 64.0
 
+[node name="MemoryUsageLabel" type="Label" parent="."]
+offset_left = 1343.0
+offset_top = 41.0
+offset_right = 1383.0
+offset_bottom = 64.0
+
 [node name="GameOfLife" type="GameOfLife" parent="."]
 
 [node name="TickTimer" type="Timer" parent="."]
