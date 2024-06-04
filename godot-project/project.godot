@@ -15,6 +15,10 @@ run/main_scene="res://scenes/sce_mainGdExtension.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+
 [display]
 
 window/size/viewport_width=1600
@@ -23,3 +27,7 @@ window/size/viewport_height=900
 [dotnet]
 
 project/assembly_name="conways-game-of-life"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
